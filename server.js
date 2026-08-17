@@ -1,8 +1,11 @@
 const express = require("express");
-const app = express();
+const swaggerUi = require("swagger-ui-express");
+const openapiSpec = require("./openapi.json");const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+// Swagger UI reads openapi.json and turns it into interactive docs at /docs
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpec));
 
 // Our "database" — just an array in memory. Resets every time the server restarts.
 let tasks = [
