@@ -184,7 +184,7 @@ both an app restart and a full container teardown. I never used
 ## Endpoints
 
 | Method | Path         | Description                          | Success | Errors            |
-|--------|--------------|---------------------------------------|---------|--------------------|
+|--------|--------------|---------------------------------------|---------|--------------------| 
 | GET    | /            | API description                       | 200     | -                  |
 | GET    | /health      | Health check                          | 200     | -                  |
 | GET    | /tasks       | List all tasks                        | 200     | -                  |
