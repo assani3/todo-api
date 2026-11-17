@@ -1,13 +1,15 @@
+require("dotenv").config();
+
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const openapiSpec = require("./openapi.json");
-const { createSqliteTaskRepository } = require("./repositories/sqliteTaskRepository");
+const { createPostgresTaskRepository } = require("./repositories/postgresTaskRepository");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // WIRING: the one place that decides which storage is used.
-const repo = createSqliteTaskRepository();
+const repo = createPostgresTaskRepository(process.env.DATABASE_URL);
 
 app.use(express.json());
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpec));
